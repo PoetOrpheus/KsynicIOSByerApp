@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8F68382030042F4200757363 /* KsynicIOSByerAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F68381F30042F4200757363 /* KsynicIOSByerAppApp.swift */; };
+		8F68382230042F4200757363 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F68382130042F4200757363 /* ContentView.swift */; };
+		8F68382430042F4800757363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F68382330042F4800757363 /* Assets.xcassets */; };
+		8F68382730042F4800757363 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F68382630042F4800757363 /* Preview Assets.xcassets */; };
+		8F68383130042F4900757363 /* KsynicIOSByerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F68383030042F4900757363 /* KsynicIOSByerAppTests.swift */; };
+		8F68383B30042F4900757363 /* KsynicIOSByerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F68383A30042F4900757363 /* KsynicIOSByerAppUITests.swift */; };
+		8F68383D30042F4900757363 /* KsynicIOSByerAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F68383C30042F4900757363 /* KsynicIOSByerAppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8F68382D30042F4900757363 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F68381430042F4100757363 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F68381B30042F4200757363;
+			remoteInfo = KsynicIOSByerApp;
+		};
+		8F68383730042F4900757363 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F68381430042F4100757363 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F68381B30042F4200757363;
+			remoteInfo = KsynicIOSByerApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8F68381C30042F4200757363 /* KsynicIOSByerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KsynicIOSByerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F68381F30042F4200757363 /* KsynicIOSByerAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KsynicIOSByerAppApp.swift; sourceTree = "<group>"; };
+		8F68382130042F4200757363 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8F68382330042F4800757363 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8F68382630042F4800757363 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8F68382C30042F4900757363 /* KsynicIOSByerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KsynicIOSByerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F68383030042F4900757363 /* KsynicIOSByerAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KsynicIOSByerAppTests.swift; sourceTree = "<group>"; };
+		8F68383630042F4900757363 /* KsynicIOSByerAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KsynicIOSByerAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F68383A30042F4900757363 /* KsynicIOSByerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KsynicIOSByerAppUITests.swift; sourceTree = "<group>"; };
+		8F68383C30042F4900757363 /* KsynicIOSByerAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KsynicIOSByerAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8F68381930042F4200757363 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F68382930042F4900757363 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F68383330042F4900757363 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F68381330042F4100757363 = {
+			isa = PBXGroup;
+			children = (
+				8F68381E30042F4200757363 /* KsynicIOSByerApp */,
+				8F68382F30042F4900757363 /* KsynicIOSByerAppTests */,
+				8F68383930042F4900757363 /* KsynicIOSByerAppUITests */,
+				8F68381D30042F4200757363 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8F68381D30042F4200757363 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F68381C30042F4200757363 /* KsynicIOSByerApp.app */,
+				8F68382C30042F4900757363 /* KsynicIOSByerAppTests.xctest */,
+				8F68383630042F4900757363 /* KsynicIOSByerAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8F68381E30042F4200757363 /* KsynicIOSByerApp */ = {
+			isa = PBXGroup;
+			children = (
+				8F68381F30042F4200757363 /* KsynicIOSByerAppApp.swift */,
+				8F68382130042F4200757363 /* ContentView.swift */,
+				8F68382330042F4800757363 /* Assets.xcassets */,
+				8F68382530042F4800757363 /* Preview Content */,
+			);
+			path = KsynicIOSByerApp;
+			sourceTree = "<group>";
+		};
+		8F68382530042F4800757363 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8F68382630042F4800757363 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8F68382F30042F4900757363 /* KsynicIOSByerAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				8F68383030042F4900757363 /* KsynicIOSByerAppTests.swift */,
+			);
+			path = KsynicIOSByerAppTests;
+			sourceTree = "<group>";
+		};
+		8F68383930042F4900757363 /* KsynicIOSByerAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8F68383A30042F4900757363 /* KsynicIOSByerAppUITests.swift */,
+				8F68383C30042F4900757363 /* KsynicIOSByerAppUITestsLaunchTests.swift */,
+			);
+			path = KsynicIOSByerAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8F68381B30042F4200757363 /* KsynicIOSByerApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F68384030042F4900757363 /* Build configuration list for PBXNativeTarget "KsynicIOSByerApp" */;
+			buildPhases = (
+				8F68381830042F4200757363 /* Sources */,
+				8F68381930042F4200757363 /* Frameworks */,
+				8F68381A30042F4200757363 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KsynicIOSByerApp;
+			productName = KsynicIOSByerApp;
+			productReference = 8F68381C30042F4200757363 /* KsynicIOSByerApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8F68382B30042F4900757363 /* KsynicIOSByerAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F68384330042F4900757363 /* Build configuration list for PBXNativeTarget "KsynicIOSByerAppTests" */;
+			buildPhases = (
+				8F68382830042F4900757363 /* Sources */,
+				8F68382930042F4900757363 /* Frameworks */,
+				8F68382A30042F4900757363 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F68382E30042F4900757363 /* PBXTargetDependency */,
+			);
+			name = KsynicIOSByerAppTests;
+			productName = KsynicIOSByerAppTests;
+			productReference = 8F68382C30042F4900757363 /* KsynicIOSByerAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8F68383530042F4900757363 /* KsynicIOSByerAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F68384630042F4900757363 /* Build configuration list for PBXNativeTarget "KsynicIOSByerAppUITests" */;
+			buildPhases = (
+				8F68383230042F4900757363 /* Sources */,
+				8F68383330042F4900757363 /* Frameworks */,
+				8F68383430042F4900757363 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F68383830042F4900757363 /* PBXTargetDependency */,
+			);
+			name = KsynicIOSByerAppUITests;
+			productName = KsynicIOSByerAppUITests;
+			productReference = 8F68383630042F4900757363 /* KsynicIOSByerAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8F68381430042F4100757363 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					8F68381B30042F4200757363 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					8F68382B30042F4900757363 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 8F68381B30042F4200757363;
+					};
+					8F68383530042F4900757363 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 8F68381B30042F4200757363;
+					};
+				};
+			};
+			buildConfigurationList = 8F68381730042F4100757363 /* Build configuration list for PBXProject "KsynicIOSByerApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8F68381330042F4100757363;
+			productRefGroup = 8F68381D30042F4200757363 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8F68381B30042F4200757363 /* KsynicIOSByerApp */,
+				8F68382B30042F4900757363 /* KsynicIOSByerAppTests */,
+				8F68383530042F4900757363 /* KsynicIOSByerAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8F68381A30042F4200757363 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F68382730042F4800757363 /* Preview Assets.xcassets in Resources */,
+				8F68382430042F4800757363 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F68382A30042F4900757363 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F68383430042F4900757363 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8F68381830042F4200757363 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F68382230042F4200757363 /* ContentView.swift in Sources */,
+				8F68382030042F4200757363 /* KsynicIOSByerAppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F68382830042F4900757363 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F68383130042F4900757363 /* KsynicIOSByerAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F68383230042F4900757363 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F68383B30042F4900757363 /* KsynicIOSByerAppUITests.swift in Sources */,
+				8F68383D30042F4900757363 /* KsynicIOSByerAppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8F68382E30042F4900757363 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F68381B30042F4200757363 /* KsynicIOSByerApp */;
+			targetProxy = 8F68382D30042F4900757363 /* PBXContainerItemProxy */;
+		};
+		8F68383830042F4900757363 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F68381B30042F4200757363 /* KsynicIOSByerApp */;
+			targetProxy = 8F68383730042F4900757363 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8F68383E30042F4900757363 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8F68383F30042F4900757363 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8F68384130042F4900757363 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"KsynicIOSByerApp/Preview Content\"";
+				DEVELOPMENT_TEAM = RA8VK85K3K;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ksynic.KsynicIOSByerApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8F68384230042F4900757363 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"KsynicIOSByerApp/Preview Content\"";
+				DEVELOPMENT_TEAM = RA8VK85K3K;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ksynic.KsynicIOSByerApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8F68384430042F4900757363 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RA8VK85K3K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ksynic.KsynicIOSByerAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KsynicIOSByerApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KsynicIOSByerApp";
+			};
+			name = Debug;
+		};
+		8F68384530042F4900757363 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RA8VK85K3K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ksynic.KsynicIOSByerAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KsynicIOSByerApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KsynicIOSByerApp";
+			};
+			name = Release;
+		};
+		8F68384730042F4900757363 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RA8VK85K3K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ksynic.KsynicIOSByerAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KsynicIOSByerApp;
+			};
+			name = Debug;
+		};
+		8F68384830042F4900757363 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RA8VK85K3K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ksynic.KsynicIOSByerAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KsynicIOSByerApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8F68381730042F4100757363 /* Build configuration list for PBXProject "KsynicIOSByerApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F68383E30042F4900757363 /* Debug */,
+				8F68383F30042F4900757363 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F68384030042F4900757363 /* Build configuration list for PBXNativeTarget "KsynicIOSByerApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F68384130042F4900757363 /* Debug */,
+				8F68384230042F4900757363 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F68384330042F4900757363 /* Build configuration list for PBXNativeTarget "KsynicIOSByerAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F68384430042F4900757363 /* Debug */,
+				8F68384530042F4900757363 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F68384630042F4900757363 /* Build configuration list for PBXNativeTarget "KsynicIOSByerAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F68384730042F4900757363 /* Debug */,
+				8F68384830042F4900757363 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8F68381430042F4100757363 /* Project object */;
+}
