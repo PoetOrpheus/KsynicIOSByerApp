@@ -51,7 +51,6 @@ struct CreateProductScreen: View {
             ImagePicker(selectedImages: $selectedImages, maxSelection: maxPhotos - selectedImages.count)
         }
         .background(Color.sellerBackground)
-        .keyboardDoneButton()
     }
     
     private var basicCard: some View {
@@ -59,12 +58,12 @@ struct CreateProductScreen: View {
             VStack(spacing: 12) {
                 SellerTextField(title: "Название товара", text: $name, onSubmit: { focusedField = .price })
                     .focused($focusedField, equals: .name)
-                SellerTextField(title: "Цена", text: $price, keyboardType: .decimalPad, onSubmit: { focusedField = .oldPrice })
+                SellerNumericField(title: "Цена", text: $price, keyboardType: .decimalPad, onDone: { focusedField = .oldPrice })
                     .focused($focusedField, equals: .price)
-                SellerTextField(title: "Старая цена", text: $oldPrice, keyboardType: .decimalPad, onSubmit: { focusedField = .stock })
+                SellerNumericField(title: "Старая цена", text: $oldPrice, keyboardType: .decimalPad, onDone: { focusedField = .stock })
                     .focused($focusedField, equals: .oldPrice)
                 HStack {
-                    SellerTextField(title: "Остаток", text: $stock, keyboardType: .numberPad, onSubmit: { focusedField = .shortDescription })
+                    SellerNumericField(title: "Остаток", text: $stock, keyboardType: .numberPad, onDone: { focusedField = .shortDescription })
                         .focused($focusedField, equals: .stock)
                     Toggle("Без лимита", isOn: $unlimitedStock)
                         .toggleStyle(.switch)

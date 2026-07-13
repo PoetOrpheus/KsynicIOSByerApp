@@ -160,7 +160,7 @@ struct AuthScreen: View {
     private var loginForm: some View {
         switch viewModel.phoneLoginStep {
         case .phone:
-            SellerTextField(title: "Телефон", text: $phone, keyboardType: .phonePad, textColor: .sellerInkDark, surfaceColor: .white)
+            SellerNumericField(title: "Телефон", text: $phone, keyboardType: .phonePad, textColor: .sellerInkDark, surfaceColor: .white)
         case .choice:
             VStack(spacing: 12) {
                 Button("Войти по SMS-коду") {
@@ -196,7 +196,7 @@ struct AuthScreen: View {
             }
         case .code:
             VStack(spacing: 12) {
-                SellerTextField(title: "Код из SMS", text: $loginCode, keyboardType: .numberPad, textColor: .sellerInkDark, surfaceColor: .white)
+                SellerNumericField(title: "Код из SMS", text: $loginCode, keyboardType: .numberPad, textColor: .sellerInkDark, surfaceColor: .white)
                 Button("Отправить код повторно") {
                     Task { await viewModel.requestPhoneLoginCode() }
                 }
@@ -217,7 +217,7 @@ struct AuthScreen: View {
         switch viewModel.registrationStep {
         case .form:
             VStack(spacing: 12) {
-                SellerTextField(title: "Телефон", text: $phone, keyboardType: .phonePad, textColor: .sellerInkDark, surfaceColor: .white)
+                SellerNumericField(title: "Телефон", text: $phone, keyboardType: .phonePad, textColor: .sellerInkDark, surfaceColor: .white)
                 SellerTextField(title: "Email", text: $email, keyboardType: .emailAddress, textColor: .sellerInkDark, surfaceColor: .white)
                 SellerTextField(title: "Пароль", text: $password, isSecure: true, textColor: .sellerInkDark, surfaceColor: .white)
                 SellerTextField(title: "Имя", text: $firstName, textColor: .sellerInkDark, surfaceColor: .white)
@@ -225,7 +225,7 @@ struct AuthScreen: View {
             }
         case .code:
             VStack(spacing: 12) {
-                SellerTextField(title: "Код из SMS", text: $registrationCode, keyboardType: .numberPad, textColor: .sellerInkDark, surfaceColor: .white)
+                SellerNumericField(title: "Код из SMS", text: $registrationCode, keyboardType: .numberPad, textColor: .sellerInkDark, surfaceColor: .white)
                 Button("Отправить код повторно") {
                     Task { await viewModel.resendRegistrationCode() }
                 }

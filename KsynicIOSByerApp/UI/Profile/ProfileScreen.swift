@@ -371,7 +371,7 @@ struct ChangePhoneDialog: View {
                     Text("Введите новый номер телефона. На него придёт SMS с кодом подтверждения.")
                         .font(.sellerBody)
                         .foregroundColor(.sellerMuted)
-                    SellerTextField(title: "Новый телефон", text: $newPhone, keyboardType: .phonePad)
+                    SellerNumericField(title: "Новый телефон", text: $newPhone, keyboardType: .phonePad)
                     Button("Получить код") {
                         Task { await viewModel.requestPhoneChange(newPhone: newPhone) }
                         step = .code
@@ -381,7 +381,7 @@ struct ChangePhoneDialog: View {
                     Text("Код отправлен на номер \(newPhone).")
                         .font(.sellerBody)
                         .foregroundColor(.sellerMuted)
-                    SellerTextField(title: "Код из SMS", text: $code, keyboardType: .numberPad)
+                    SellerNumericField(title: "Код из SMS", text: $code, keyboardType: .numberPad)
                     Button("Подтвердить") {
                         Task {
                             await viewModel.confirmPhoneChange(newPhone: newPhone, code: code)
