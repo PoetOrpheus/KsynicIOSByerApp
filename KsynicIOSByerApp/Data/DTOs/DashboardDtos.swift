@@ -1,5 +1,15 @@
 import Foundation
 
+fileprivate func decodeDoubleOrString(from container: KeyedDecodingContainer<SellerOrderDto.CodingKeys>, forKey key: SellerOrderDto.CodingKeys) -> Double? {
+    if let value = try? container.decode(Double.self, forKey: key) {
+        return value
+    }
+    if let value = try? container.decode(String.self, forKey: key) {
+        return Double(value)
+    }
+    return nil
+}
+
 struct SellerDashboardDto: Codable {
     let toShip: [SellerOrderDto]?
     let sent: [SellerOrderDto]?

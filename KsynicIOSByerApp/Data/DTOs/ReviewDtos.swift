@@ -1,5 +1,18 @@
 import Foundation
 
+fileprivate func decodeIntOrString(from container: KeyedDecodingContainer<ProductReviewDto.CodingKeys>, forKey key: ProductReviewDto.CodingKeys) -> Int? {
+    if let value = try? container.decode(Int.self, forKey: key) {
+        return value
+    }
+    if let value = try? container.decode(String.self, forKey: key) {
+        if let int = Int(value) {
+            return int
+        }
+        return Int(Double(value) ?? 0)
+    }
+    return nil
+}
+
 struct SellerReviewsPayloadDto: Codable {
     let totalReviews: Int?
     let newReviews: Int?
