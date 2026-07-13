@@ -83,6 +83,23 @@ struct ProductReviewDto: Codable, Identifiable {
         case updatedAt = "updated_at"
     }
     
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        idValue = try container.decodeIfPresent(String.self, forKey: .idValue)
+        productId = try container.decodeIfPresent(String.self, forKey: .productId)
+        productName = try container.decodeIfPresent(String.self, forKey: .productName)
+        productRating = container.decodeIntOrString(forKey: .productRating)
+        productReviewsCount = try container.decodeIfPresent(Int.self, forKey: .productReviewsCount)
+        userId = try container.decodeIfPresent(String.self, forKey: .userId)
+        author = try container.decodeIfPresent(ReviewAuthorDto.self, forKey: .author)
+        text = try container.decodeIfPresent(String.self, forKey: .text)
+        likesCount = try container.decodeIfPresent(Int.self, forKey: .likesCount)
+        dislikesCount = try container.decodeIfPresent(Int.self, forKey: .dislikesCount)
+        images = try container.decodeIfPresent([ReviewImageDto].self, forKey: .images)
+        createdAt = try container.decodeIfPresent(String.self, forKey: .createdAt)
+        updatedAt = try container.decodeIfPresent(String.self, forKey: .updatedAt)
+    }
+    
     // Backward-compatible helpers used by the UI
     var authorName: String? {
         if let displayName = author?.displayName, !displayName.isEmpty {

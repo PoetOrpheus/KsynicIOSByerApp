@@ -63,8 +63,8 @@ struct SellerShell: View {
         }
         .overlay(
             MessageOverlay(viewModel: viewModel)
-                .padding(.top, 8),
-            alignment: .top
+                .padding(.bottom, 8),
+            alignment: .bottom
         )
         .preferredColorScheme(.dark)
     }

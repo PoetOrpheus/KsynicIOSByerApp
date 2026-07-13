@@ -40,6 +40,21 @@ struct SellerOrderDto: Codable, Identifiable {
         case createdAt = "created_at"
         case article, price
     }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        idValue = try container.decodeIfPresent(String.self, forKey: .idValue)
+        productId = try container.decodeIfPresent(String.self, forKey: .productId)
+        title = try container.decodeIfPresent(String.self, forKey: .title)
+        quantity = try container.decodeIfPresent(Int.self, forKey: .quantity)
+        status = try container.decodeIfPresent(String.self, forKey: .status)
+        expectedDate = try container.decodeIfPresent(String.self, forKey: .expectedDate)
+        pickupPoint = try container.decodeIfPresent(String.self, forKey: .pickupPoint)
+        imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl)
+        createdAt = try container.decodeIfPresent(String.self, forKey: .createdAt)
+        article = try container.decodeIfPresent(String.self, forKey: .article)
+        price = container.decodeDoubleOrString(forKey: .price)
+    }
 }
 
 struct SellerAnalyticsDto: Codable {

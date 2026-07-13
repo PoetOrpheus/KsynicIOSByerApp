@@ -54,6 +54,36 @@ struct SellerProductDto: Codable, Identifiable {
         case primaryThumbnail = "primary_thumbnail"
         case images, specifications
     }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        idValue = try container.decodeIfPresent(String.self, forKey: .idValue)
+        article = try container.decodeIfPresent(String.self, forKey: .article)
+        sellerId = try container.decodeIfPresent(String.self, forKey: .sellerId)
+        name = try container.decodeIfPresent(String.self, forKey: .name)
+        slug = try container.decodeIfPresent(String.self, forKey: .slug)
+        description = try container.decodeIfPresent(String.self, forKey: .description)
+        shortDescription = try container.decodeIfPresent(String.self, forKey: .shortDescription)
+        price = container.decodeDoubleOrString(forKey: .price)
+        oldPrice = container.decodeDoubleOrString(forKey: .oldPrice)
+        discountPercent = try container.decodeIfPresent(Int.self, forKey: .discountPercent)
+        categoryId = try container.decodeIfPresent(String.self, forKey: .categoryId)
+        stockQuantity = try container.decodeIfPresent(Int.self, forKey: .stockQuantity)
+        isUnlimitedStock = try container.decodeIfPresent(Bool.self, forKey: .isUnlimitedStock)
+        status = try container.decodeIfPresent(String.self, forKey: .status)
+        isActive = try container.decodeIfPresent(Bool.self, forKey: .isActive)
+        rating = container.decodeDoubleOrString(forKey: .rating)
+        ratingsCount = try container.decodeIfPresent(Int.self, forKey: .ratingsCount)
+        reviewsCount = try container.decodeIfPresent(Int.self, forKey: .reviewsCount)
+        createdAt = try container.decodeIfPresent(String.self, forKey: .createdAt)
+        updatedAt = try container.decodeIfPresent(String.self, forKey: .updatedAt)
+        publishedAt = try container.decodeIfPresent(String.self, forKey: .publishedAt)
+        category = try container.decodeIfPresent(ProductCategoryDto.self, forKey: .category)
+        primaryImage = try container.decodeIfPresent(String.self, forKey: .primaryImage)
+        primaryThumbnail = try container.decodeIfPresent(String.self, forKey: .primaryThumbnail)
+        images = try container.decodeIfPresent([ProductImageDto].self, forKey: .images)
+        specifications = try container.decodeIfPresent([SellerProductSpecDto].self, forKey: .specifications)
+    }
 }
 
 struct ProductCategoryDto: Codable, Identifiable {
