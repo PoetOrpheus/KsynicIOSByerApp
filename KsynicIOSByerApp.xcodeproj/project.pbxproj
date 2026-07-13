@@ -170,7 +170,6 @@
 		8F68381E30042F4200757363 /* KsynicIOSByerApp */ = {
 			isa = PBXGroup;
 			children = (
-				8F68382630042F4800757363 /* Preview Assets.xcassets */,
 				C3C04479336E77A599498A9B /* Utils */,
 				B720F32502809FE7602A5FC8 /* UI */,
 				0E069D5A2660202A50920690 /* State */,
