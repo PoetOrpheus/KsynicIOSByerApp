@@ -75,20 +75,20 @@ struct SellerProfileDto: Codable {
 }
 
 struct UpdateSellerRequest: Codable {
-    let shopName: String?
-    let description: String?
-    let firstName: String?
-    let lastName: String?
-    let phone: String?
-    let email: String?
-    let avatarUrl: String?
-    let businessType: String?
-    let legalName: String?
-    let taxId: String?
-    let registrationNumber: String?
-    let pickupPointId: String?
-    let pickupPoint: String?
-    let notificationsEnabled: Bool?
+    let shopName: String? = nil
+    let description: String? = nil
+    let firstName: String? = nil
+    let lastName: String? = nil
+    let phone: String? = nil
+    let email: String? = nil
+    let avatarUrl: String? = nil
+    let businessType: String? = nil
+    let legalName: String? = nil
+    let taxId: String? = nil
+    let registrationNumber: String? = nil
+    let pickupPointId: String? = nil
+    let pickupPoint: String? = nil
+    let notificationsEnabled: Bool? = nil
     
     enum CodingKeys: String, CodingKey {
         case shopName = "shop_name"

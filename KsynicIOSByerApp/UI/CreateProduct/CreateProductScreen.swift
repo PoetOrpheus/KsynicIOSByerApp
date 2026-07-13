@@ -303,10 +303,10 @@ struct CreateProductScreen: View {
         guard let parsedPrice = price.normalizedDouble(allowBlank: false), parsedPrice > 0 else {
             issues.append("цена")
         }
-        if let parsedPrice = parsedPrice, parsedPrice > 99_999_999.99 { issues.append("цена не может превышать 99 999 999.99") }
+        if parsedPrice > 99_999_999.99 { issues.append("цена не может превышать 99 999 999.99") }
         if let parsedOld = oldPrice.normalizedDouble(allowBlank: true) {
             if parsedOld > 99_999_999.99 { issues.append("старая цена не может превышать 99 999 999.99") }
-            if let parsedPrice = parsedPrice, parsedOld < parsedPrice { issues.append("старая цена не меньше текущей") }
+            if parsedOld < parsedPrice { issues.append("старая цена не меньше текущей") }
         } else if !oldPrice.isEmpty {
             issues.append("старая цена")
         }
