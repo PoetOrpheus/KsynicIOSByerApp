@@ -20,6 +20,7 @@ struct SellerTextField: View {
             if isSecure {
                 SecureField(placeholder, text: $text)
                     .disabled(!isEnabled)
+                    .foregroundColor(.sellerInk)
                     .padding(12)
                     .background(Color.sellerSurface)
                     .overlay(
@@ -30,6 +31,7 @@ struct SellerTextField: View {
             } else if minLines > 1 {
                 TextEditor(text: $text)
                     .disabled(!isEnabled)
+                    .foregroundColor(.sellerInk)
                     .frame(minHeight: CGFloat(minLines * 20))
                     .padding(8)
                     .background(Color.sellerSurface)
@@ -41,6 +43,7 @@ struct SellerTextField: View {
             } else {
                 TextField(placeholder, text: $text)
                     .disabled(!isEnabled)
+                    .foregroundColor(.sellerInk)
                     .keyboardType(keyboardType)
                     .submitLabel(submitLabel)
                     .onSubmit {
@@ -53,6 +56,17 @@ struct SellerTextField: View {
                             .stroke(Color.authFieldBorder, lineWidth: 1)
                     )
                     .cornerRadius(8)
+            }
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                HStack {
+                    Spacer()
+                    Button("Готово") {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+                    .foregroundColor(.sellerBlue)
+                }
             }
         }
     }
