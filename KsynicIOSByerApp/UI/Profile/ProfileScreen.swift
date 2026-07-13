@@ -43,7 +43,7 @@ struct ProfileScreen: View {
             HStack(spacing: 16) {
                 ZStack {
                     Circle()
-                        .fill(Color.sellerSurfaceDark)
+                        .fill(Color.sellerSurface)
                         .frame(width: 64, height: 64)
                     Text(initials)
                         .font(.system(size: 24, weight: .bold))
