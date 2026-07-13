@@ -4,10 +4,10 @@ iOS-приложение продавца для маркетплейса Ksynic
 
 ## Требования
 
-- macOS 13.0+
-- Xcode 15.0+
-- iOS 16.0+
-- Swift 5.9+
+- macOS 11.5+ (для Xcode 13) или macOS 12.5+ (для Xcode 14)
+- Xcode 13.0+ (требуется для `async/await` в Swift 5.5+)
+- iOS 15.0+ (требуется для `AsyncImage`)
+- Swift 5.5+
 
 ## Стек
 
@@ -18,11 +18,13 @@ iOS-приложение продавца для маркетплейса Ksynic
 
 ## Сборка и запуск
 
-1. Откройте `KsynicIOSByerApp.xcodeproj` в Xcode.
-2. Выберите target `KsynicIOSByerApp`.
-3. Убедитесь, что signing team выбрана (или задайте свою в `Signing & Capabilities`).
-4. Выберите симулятор или подключённое устройство.
-5. Нажмите `Cmd+R` для сборки и запуска.
+1. Убедитесь, что установлен **Xcode 13.0 или новее** (код использует `async/await` из Swift 5.5+).
+   - macOS 12.7.6 поддерживает Xcode 13.4.1 и Xcode 14.2.
+2. Откройте `KsynicIOSByerApp.xcodeproj` в Xcode.
+3. Выберите target `KsynicIOSByerApp`.
+4. Убедитесь, что signing team выбрана (или задайте свою в `Signing & Capabilities`).
+5. Выберите симулятор или подключённое устройство.
+6. Нажмите `Cmd+R` для сборки и запуска.
 
 ## Конфигурация сервера
 
