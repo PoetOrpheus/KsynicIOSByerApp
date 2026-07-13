@@ -117,10 +117,9 @@
 		B993CA12FCE28708F62E08AA /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		C8D55F6FF46339BC8EF6AB46 /* ReviewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsScreen.swift; sourceTree = "<group>"; };
 		C97FCE4B73C5C80F4FF3E2D5 /* ShipmentsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentsScreen.swift; sourceTree = "<group>"; };
-		E16EDE316D15EBAA2A13953B /* String+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String+Formatting.swift; sourceTree = "<group>"; };
-		71DE33B6FFC737C28E8B8E00 /* Double+Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double+Money.swift; sourceTree = "<group>"; };
+		E16EDE316D15EBAA2A13953B /* String+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Formatting.swift"; sourceTree = "<group>"; };
+		71DE33B6FFC737C28E8B8E00 /* Double+Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Money.swift"; sourceTree = "<group>"; };
 		641854D13E7A1372B75E0C42 /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
-		F1E2D3C4B5A607081920A1B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +178,6 @@
 				F19BD0E3FD82DE41C8AAE69A /* Data */,
 				7C825EE2527F6281D49E9E1C /* App */,
 				8F68382330042F4800757363 /* Assets.xcassets */,
-				F1E2D3C4B5A607081920A1B2 /* Info.plist */,
 				8F68382530042F4800757363 /* Preview Content */,
 			);
 			path = KsynicIOSByerApp;
