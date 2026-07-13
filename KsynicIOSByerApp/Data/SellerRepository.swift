@@ -12,7 +12,7 @@ actor SellerRepository {
     }
     
     func register(request: SellerRegisterRequest) async throws -> SellerAuthResponse {
-        try await api.register(request: request)
+        try await api.register(body: request)
     }
     
     func lookup(phone: String) async throws -> SellerLookupResponse {
@@ -20,7 +20,7 @@ actor SellerRepository {
     }
     
     func login(request: SellerLoginRequest) async throws -> SellerAuthResponse {
-        try await api.login(request: request)
+        try await api.login(body: request)
     }
     
     func getSeller(sellerId: String) async throws -> SellerDetailsResponse {
@@ -28,7 +28,7 @@ actor SellerRepository {
     }
     
     func updateSeller(sellerId: String, request: UpdateSellerRequest) async throws -> SellerDetailsResponse {
-        try await api.updateSeller(sellerId: sellerId, request: request)
+        try await api.updateSeller(sellerId: sellerId, body: request)
     }
     
     func deleteSeller(sellerId: String) async throws -> ApiMessageResponse {
@@ -36,15 +36,15 @@ actor SellerRepository {
     }
     
     func verifyPassword(sellerId: String, password: String) async throws -> ApiMessageResponse {
-        try await api.verifyPassword(sellerId: sellerId, request: VerifyPasswordRequest(password: password))
+        try await api.verifyPassword(sellerId: sellerId, body: VerifyPasswordRequest(password: password))
     }
     
     func requestPhoneChange(sellerId: String, phone: String) async throws -> ContactVerificationResponse {
-        try await api.requestPhoneChange(sellerId: sellerId, request: PhoneChangeRequest(phone: phone))
+        try await api.requestPhoneChange(sellerId: sellerId, body: PhoneChangeRequest(phone: phone))
     }
     
     func confirmPhoneChange(sellerId: String, phone: String, code: String) async throws -> SellerDetailsResponse {
-        try await api.confirmPhoneChange(sellerId: sellerId, request: PhoneChangeConfirmRequest(phone: phone, code: code))
+        try await api.confirmPhoneChange(sellerId: sellerId, body: PhoneChangeConfirmRequest(phone: phone, code: code))
     }
     
     func getDocuments(sellerId: String) async throws -> SellerDocumentsResponse {
@@ -52,7 +52,7 @@ actor SellerRepository {
     }
     
     func uploadDocument(sellerId: String, request: UploadSellerDocumentRequest) async throws -> SellerDocumentResponse {
-        try await api.uploadDocument(sellerId: sellerId, request: request)
+        try await api.uploadDocument(sellerId: sellerId, body: request)
     }
     
     func deleteDocument(sellerId: String, documentId: String) async throws -> ApiMessageResponse {
@@ -60,11 +60,11 @@ actor SellerRepository {
     }
     
     func requestContactVerification(sellerId: String, channel: String, method: String? = nil) async throws -> ContactVerificationResponse {
-        try await api.requestContactVerification(sellerId: sellerId, request: ContactVerificationRequest(channel: channel, method: method))
+        try await api.requestContactVerification(sellerId: sellerId, body: ContactVerificationRequest(channel: channel, method: method))
     }
     
     func confirmContactVerification(sellerId: String, channel: String, code: String) async throws -> ContactVerificationResponse {
-        try await api.confirmContactVerification(sellerId: sellerId, request: ContactVerificationConfirmRequest(channel: channel, code: code))
+        try await api.confirmContactVerification(sellerId: sellerId, body: ContactVerificationConfirmRequest(channel: channel, code: code))
     }
     
     func submitVerificationRequest(sellerId: String) async throws -> VerificationRequestResponse {
@@ -104,15 +104,15 @@ actor SellerRepository {
     }
     
     func createProduct(sellerId: String, request: UpsertSellerProductRequest) async throws -> SellerProductResponse {
-        try await api.createProduct(sellerId: sellerId, request: request)
+        try await api.createProduct(sellerId: sellerId, body: request)
     }
     
     func updateProduct(sellerId: String, productId: String, request: UpsertSellerProductRequest) async throws -> SellerProductResponse {
-        try await api.updateProduct(sellerId: sellerId, productId: productId, request: request)
+        try await api.updateProduct(sellerId: sellerId, productId: productId, body: request)
     }
     
     func updateProductStatus(sellerId: String, productId: String, status: String) async throws -> SellerProductResponse {
-        try await api.updateProductStatus(sellerId: sellerId, productId: productId, request: ProductStatusRequest(status: status))
+        try await api.updateProductStatus(sellerId: sellerId, productId: productId, body: ProductStatusRequest(status: status))
     }
     
     func deleteProduct(sellerId: String, productId: String) async throws -> ApiMessageResponse {

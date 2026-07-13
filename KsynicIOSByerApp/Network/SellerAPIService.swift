@@ -30,16 +30,16 @@ actor SellerAPIService {
     
     // MARK: - Auth
     
-    func register(request: SellerRegisterRequest) async throws -> SellerAuthResponse {
-        return try await request(method: "POST", path: "sellers/register", body: request)
+    func register(body: SellerRegisterRequest) async throws -> SellerAuthResponse {
+        return try await request(method: "POST", path: "sellers/register", body: body)
     }
     
     func lookup(phone: String) async throws -> SellerLookupResponse {
         return try await request(method: "POST", path: "sellers/lookup", body: SellerLookupRequest(phone: phone))
     }
     
-    func login(request: SellerLoginRequest) async throws -> SellerAuthResponse {
-        return try await request(method: "POST", path: "sellers/login", body: request)
+    func login(body: SellerLoginRequest) async throws -> SellerAuthResponse {
+        return try await request(method: "POST", path: "sellers/login", body: body)
     }
     
     // MARK: - Profile
@@ -48,24 +48,24 @@ actor SellerAPIService {
         return try await request(method: "GET", path: "sellers/\(sellerId)")
     }
     
-    func updateSeller(sellerId: String, request: UpdateSellerRequest) async throws -> SellerDetailsResponse {
-        return try await request(method: "PUT", path: "sellers/\(sellerId)", body: request)
+    func updateSeller(sellerId: String, body: UpdateSellerRequest) async throws -> SellerDetailsResponse {
+        return try await request(method: "PUT", path: "sellers/\(sellerId)", body: body)
     }
     
     func deleteSeller(sellerId: String) async throws -> ApiMessageResponse {
         return try await request(method: "DELETE", path: "sellers/\(sellerId)")
     }
     
-    func verifyPassword(sellerId: String, request: VerifyPasswordRequest) async throws -> ApiMessageResponse {
-        return try await request(method: "POST", path: "sellers/\(sellerId)/verify-password", body: request)
+    func verifyPassword(sellerId: String, body: VerifyPasswordRequest) async throws -> ApiMessageResponse {
+        return try await request(method: "POST", path: "sellers/\(sellerId)/verify-password", body: body)
     }
     
-    func requestPhoneChange(sellerId: String, request: PhoneChangeRequest) async throws -> ContactVerificationResponse {
-        return try await request(method: "POST", path: "sellers/\(sellerId)/phone-change/request", body: request)
+    func requestPhoneChange(sellerId: String, body: PhoneChangeRequest) async throws -> ContactVerificationResponse {
+        return try await request(method: "POST", path: "sellers/\(sellerId)/phone-change/request", body: body)
     }
     
-    func confirmPhoneChange(sellerId: String, request: PhoneChangeConfirmRequest) async throws -> SellerDetailsResponse {
-        return try await request(method: "POST", path: "sellers/\(sellerId)/phone-change/confirm", body: request)
+    func confirmPhoneChange(sellerId: String, body: PhoneChangeConfirmRequest) async throws -> SellerDetailsResponse {
+        return try await request(method: "POST", path: "sellers/\(sellerId)/phone-change/confirm", body: body)
     }
     
     // MARK: - Documents
@@ -74,8 +74,8 @@ actor SellerAPIService {
         return try await request(method: "GET", path: "sellers/\(sellerId)/documents")
     }
     
-    func uploadDocument(sellerId: String, request: UploadSellerDocumentRequest) async throws -> SellerDocumentResponse {
-        return try await request(method: "POST", path: "sellers/\(sellerId)/documents", body: request)
+    func uploadDocument(sellerId: String, body: UploadSellerDocumentRequest) async throws -> SellerDocumentResponse {
+        return try await request(method: "POST", path: "sellers/\(sellerId)/documents", body: body)
     }
     
     func deleteDocument(sellerId: String, documentId: String) async throws -> ApiMessageResponse {
@@ -84,12 +84,12 @@ actor SellerAPIService {
     
     // MARK: - Verification
     
-    func requestContactVerification(sellerId: String, request: ContactVerificationRequest) async throws -> ContactVerificationResponse {
-        return try await request(method: "POST", path: "sellers/\(sellerId)/contact-verification/request", body: request)
+    func requestContactVerification(sellerId: String, body: ContactVerificationRequest) async throws -> ContactVerificationResponse {
+        return try await request(method: "POST", path: "sellers/\(sellerId)/contact-verification/request", body: body)
     }
     
-    func confirmContactVerification(sellerId: String, request: ContactVerificationConfirmRequest) async throws -> ContactVerificationResponse {
-        return try await request(method: "POST", path: "sellers/\(sellerId)/contact-verification/confirm", body: request)
+    func confirmContactVerification(sellerId: String, body: ContactVerificationConfirmRequest) async throws -> ContactVerificationResponse {
+        return try await request(method: "POST", path: "sellers/\(sellerId)/contact-verification/confirm", body: body)
     }
     
     func submitVerificationRequest(sellerId: String) async throws -> VerificationRequestResponse {
@@ -142,16 +142,16 @@ actor SellerAPIService {
         return try await request(method: "GET", path: "sellers/\(sellerId)/products/\(productId)")
     }
     
-    func createProduct(sellerId: String, request: UpsertSellerProductRequest) async throws -> SellerProductResponse {
-        return try await request(method: "POST", path: "sellers/\(sellerId)/products", body: request)
+    func createProduct(sellerId: String, body: UpsertSellerProductRequest) async throws -> SellerProductResponse {
+        return try await request(method: "POST", path: "sellers/\(sellerId)/products", body: body)
     }
     
-    func updateProduct(sellerId: String, productId: String, request: UpsertSellerProductRequest) async throws -> SellerProductResponse {
-        return try await request(method: "PUT", path: "sellers/\(sellerId)/products/\(productId)", body: request)
+    func updateProduct(sellerId: String, productId: String, body: UpsertSellerProductRequest) async throws -> SellerProductResponse {
+        return try await request(method: "PUT", path: "sellers/\(sellerId)/products/\(productId)", body: body)
     }
     
-    func updateProductStatus(sellerId: String, productId: String, request: ProductStatusRequest) async throws -> SellerProductResponse {
-        return try await request(method: "PATCH", path: "sellers/\(sellerId)/products/\(productId)/status", body: request)
+    func updateProductStatus(sellerId: String, productId: String, body: ProductStatusRequest) async throws -> SellerProductResponse {
+        return try await request(method: "PATCH", path: "sellers/\(sellerId)/products/\(productId)/status", body: body)
     }
     
     func deleteProduct(sellerId: String, productId: String) async throws -> ApiMessageResponse {

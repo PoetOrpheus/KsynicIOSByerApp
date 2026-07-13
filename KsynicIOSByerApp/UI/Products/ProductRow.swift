@@ -84,21 +84,4 @@ struct ProductRow: View {
     }
 }
 
-struct OutlineButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.sellerCaption)
-            .fontWeight(.semibold)
-            .foregroundColor(.sellerInk)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 8)
-            .background(Color.white)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.sellerLine, lineWidth: 1)
-            )
-            .cornerRadius(8)
-            .opacity(configuration.isPressed ? 0.8 : 1)
-    }
-}
 
