@@ -1,18 +1,5 @@
 import Foundation
 
-fileprivate func decodeIntOrString(from container: KeyedDecodingContainer<ProductReviewDto.CodingKeys>, forKey key: ProductReviewDto.CodingKeys) -> Int? {
-    if let value = try? container.decode(Int.self, forKey: key) {
-        return value
-    }
-    if let value = try? container.decode(String.self, forKey: key) {
-        if let int = Int(value) {
-            return int
-        }
-        return Int(Double(value) ?? 0)
-    }
-    return nil
-}
-
 struct SellerReviewsPayloadDto: Codable {
     let totalReviews: Int?
     let newReviews: Int?
@@ -101,7 +88,14 @@ struct ProductReviewDto: Codable, Identifiable {
         idValue = try container.decodeIfPresent(String.self, forKey: .idValue)
         productId = try container.decodeIfPresent(String.self, forKey: .productId)
         productName = try container.decodeIfPresent(String.self, forKey: .productName)
-        productRating = container.decodeIntOrString(forKey: .productRating)
+        productRating = {
+            if let value = try? container.decode(Int.self, forKey: .productRating) { return value }
+            if let value = try? container.decode(String.self, forKey: .productRating) {
+                if let int = Int(value) { return int }
+                return Int(Double(value) ?? 0)
+            }
+            return nil
+        }()
         productReviewsCount = try container.decodeIfPresent(Int.self, forKey: .productReviewsCount)
         userId = try container.decodeIfPresent(String.self, forKey: .userId)
         author = try container.decodeIfPresent(ReviewAuthorDto.self, forKey: .author)

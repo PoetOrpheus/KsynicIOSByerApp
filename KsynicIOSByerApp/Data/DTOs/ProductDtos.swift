@@ -1,15 +1,5 @@
 import Foundation
 
-fileprivate func decodeDoubleOrString(from container: KeyedDecodingContainer<SellerProductDto.CodingKeys>, forKey key: SellerProductDto.CodingKeys) -> Double? {
-    if let value = try? container.decode(Double.self, forKey: key) {
-        return value
-    }
-    if let value = try? container.decode(String.self, forKey: key) {
-        return Double(value)
-    }
-    return nil
-}
-
 struct SellerProductDto: Codable, Identifiable {
     var id: String { idValue ?? UUID().uuidString }
     private let idValue: String?
@@ -74,15 +64,27 @@ struct SellerProductDto: Codable, Identifiable {
         slug = try container.decodeIfPresent(String.self, forKey: .slug)
         description = try container.decodeIfPresent(String.self, forKey: .description)
         shortDescription = try container.decodeIfPresent(String.self, forKey: .shortDescription)
-        price = container.decodeDoubleOrString(forKey: .price)
-        oldPrice = container.decodeDoubleOrString(forKey: .oldPrice)
+        price = {
+            if let value = try? container.decode(Double.self, forKey: .price) { return value }
+            if let value = try? container.decode(String.self, forKey: .price) { return Double(value) }
+            return nil
+        }()
+        oldPrice = {
+            if let value = try? container.decode(Double.self, forKey: .oldPrice) { return value }
+            if let value = try? container.decode(String.self, forKey: .oldPrice) { return Double(value) }
+            return nil
+        }()
         discountPercent = try container.decodeIfPresent(Int.self, forKey: .discountPercent)
         categoryId = try container.decodeIfPresent(String.self, forKey: .categoryId)
         stockQuantity = try container.decodeIfPresent(Int.self, forKey: .stockQuantity)
         isUnlimitedStock = try container.decodeIfPresent(Bool.self, forKey: .isUnlimitedStock)
         status = try container.decodeIfPresent(String.self, forKey: .status)
         isActive = try container.decodeIfPresent(Bool.self, forKey: .isActive)
-        rating = container.decodeDoubleOrString(forKey: .rating)
+        rating = {
+            if let value = try? container.decode(Double.self, forKey: .rating) { return value }
+            if let value = try? container.decode(String.self, forKey: .rating) { return Double(value) }
+            return nil
+        }()
         ratingsCount = try container.decodeIfPresent(Int.self, forKey: .ratingsCount)
         reviewsCount = try container.decodeIfPresent(Int.self, forKey: .reviewsCount)
         createdAt = try container.decodeIfPresent(String.self, forKey: .createdAt)

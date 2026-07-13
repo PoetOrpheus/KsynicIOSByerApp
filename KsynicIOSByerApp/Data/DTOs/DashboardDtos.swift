@@ -1,15 +1,5 @@
 import Foundation
 
-fileprivate func decodeDoubleOrString(from container: KeyedDecodingContainer<SellerOrderDto.CodingKeys>, forKey key: SellerOrderDto.CodingKeys) -> Double? {
-    if let value = try? container.decode(Double.self, forKey: key) {
-        return value
-    }
-    if let value = try? container.decode(String.self, forKey: key) {
-        return Double(value)
-    }
-    return nil
-}
-
 struct SellerDashboardDto: Codable {
     let toShip: [SellerOrderDto]?
     let sent: [SellerOrderDto]?
@@ -63,7 +53,11 @@ struct SellerOrderDto: Codable, Identifiable {
         imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl)
         createdAt = try container.decodeIfPresent(String.self, forKey: .createdAt)
         article = try container.decodeIfPresent(String.self, forKey: .article)
-        price = container.decodeDoubleOrString(forKey: .price)
+        price = {
+            if let value = try? container.decode(Double.self, forKey: .price) { return value }
+            if let value = try? container.decode(String.self, forKey: .price) { return Double(value) }
+            return nil
+        }()
     }
 }
 
