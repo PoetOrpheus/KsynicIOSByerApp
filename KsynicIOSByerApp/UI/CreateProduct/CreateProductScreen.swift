@@ -300,10 +300,14 @@ struct CreateProductScreen: View {
     private func collectIssues() -> [String] {
         var issues: [String] = []
         if name.trimmingCharacters(in: .whitespaces).count < 2 { issues.append("название товара") }
-        guard let parsedPrice = price.normalizedDouble(allowBlank: false), parsedPrice > 0 else {
+        let parsedPrice: Double
+        if let parsed = price.normalizedDouble(allowBlank: false), parsed > 0 {
+            parsedPrice = parsed
+            if parsedPrice > 99_999_999.99 { issues.append("цена не может превышать 99 999 999.99") }
+        } else {
+            parsedPrice = 0
             issues.append("цена")
         }
-        if parsedPrice > 99_999_999.99 { issues.append("цена не может превышать 99 999 999.99") }
         if let parsedOld = oldPrice.normalizedDouble(allowBlank: true) {
             if parsedOld > 99_999_999.99 { issues.append("старая цена не может превышать 99 999 999.99") }
             if parsedOld < parsedPrice { issues.append("старая цена не меньше текущей") }
