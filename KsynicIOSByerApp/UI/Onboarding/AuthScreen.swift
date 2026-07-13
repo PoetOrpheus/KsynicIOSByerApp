@@ -15,47 +15,55 @@ struct AuthScreen: View {
     @State private var passwordVisible: Bool = false
     
     var body: some View {
-        ZStack {
-            Color.sellerBlack.ignoresSafeArea()
-            
-            VStack(spacing: 0) {
-                header
+        NavigationView {
+            ZStack {
+                Color.sellerBlack.ignoresSafeArea()
                 
-                ScrollView {
-                    VStack(spacing: 20) {
-                        authModeSwitch
-                        titleBlock
-                        formContent
-                        primaryButton
-                        if let debugCode = viewModel.lastVerificationCode?.debugCode {
-                            Text("Тестовый код: \(debugCode)")
-                                .font(.sellerCaption)
-                                .foregroundColor(.sellerMuted)
+                VStack(spacing: 0) {
+                    header
+                    
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            authModeSwitch
+                            titleBlock
+                            formContent
+                            primaryButton
+                            if let debugCode = viewModel.lastVerificationCode?.debugCode {
+                                Text("Тестовый код: \(debugCode)")
+                                    .font(.sellerCaption)
+                                    .foregroundColor(.sellerMuted)
+                            }
                         }
+                        .padding(24)
                     }
-                    .padding(24)
+                    .background(
+                        Color.white
+                            .clipShape(RoundedCorner(radius: 30, corners: [.topLeft, .topRight]))
+                    )
+                    .ignoresSafeArea(edges: .bottom)
                 }
-                .background(
-                    Color.white
-                        .clipShape(RoundedCorner(radius: 30, corners: [.topLeft, .topRight]))
-                )
-                .ignoresSafeArea(edges: .bottom)
-            }
         }
+        .navigationBarHidden(true)
+    }
     }
     
     private var header: some View {
         VStack(spacing: 8) {
-            Spacer().frame(height: 40)
+            Spacer().frame(height: 30)
+            Image("Logo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100, height: 100)
+                .clipShape(RoundedRectangle(cornerRadius: 22))
             Text("Ksynic Seller")
-                .font(.system(size: 32, weight: .black))
+                .font(.system(size: 28, weight: .black))
                 .foregroundColor(.white)
             Text("Кабинет продавца маркетплейса")
                 .font(.sellerBody)
                 .foregroundColor(.white.opacity(0.68))
-            Spacer().frame(height: 30)
+            Spacer().frame(height: 20)
         }
-        .frame(height: 220)
+        .frame(height: 260)
     }
     
     private var authModeSwitch: some View {
@@ -172,10 +180,12 @@ struct AuthScreen: View {
             }
         case .password:
             VStack(spacing: 12) {
+                SellerTextField(title: "Email", text: $email, keyboardType: .emailAddress)
                 SellerTextField(title: "Пароль", text: $loginPassword, isSecure: true)
                 Button("Войти по другому номеру телефона") {
                     viewModel.resetPhoneLogin()
                     phone = "+7"
+                    email = ""
                     loginPassword = ""
                 }
                 .foregroundColor(.sellerMuted)
@@ -266,7 +276,7 @@ struct AuthScreen: View {
             case .phone:
                 await viewModel.beginPhoneLogin(phone: phone)
             case .password:
-                await viewModel.login(phone: phone, email: viewModel.pendingLoginEmail, password: loginPassword)
+                await viewModel.login(phone: phone, email: email, password: loginPassword)
             case .code:
                 await viewModel.confirmPhoneLoginCode(code: loginCode)
             case .choice:

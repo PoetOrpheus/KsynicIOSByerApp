@@ -118,7 +118,7 @@ final class SellerViewModel: ObservableObject {
     func beginPhoneLogin(phone: String) async {
         await runWithLoading {
             let response = try await repository.lookup(phone: phone)
-            guard response.exists == true, let sellerId = response.sellerId else {
+            guard response.success == true, let sellerId = response.sellerId else {
                 setError("Данный номер не найден. Попробуйте ввести другой номер или зарегистрируйте новый аккаунт")
                 return
             }

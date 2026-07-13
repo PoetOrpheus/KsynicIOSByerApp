@@ -101,20 +101,31 @@ struct SellerLookupRequest: Codable {
     let phone: String
 }
 
-struct SellerLookupResponse: Codable {
-    let success: Bool?
-    let exists: Bool?
-    let message: String?
+struct SellerLookupData: Codable {
     let sellerId: String?
+    let sellerProfileId: String?
+    let phone: String?
     let shopName: String?
-    let email: String?
+    let emailHint: String?
     
     enum CodingKeys: String, CodingKey {
-        case success, exists, message
         case sellerId = "seller_id"
+        case sellerProfileId = "seller_profile_id"
+        case phone
         case shopName = "shop_name"
-        case email
+        case emailHint = "email_hint"
     }
+}
+
+struct SellerLookupResponse: Codable {
+    let success: Bool?
+    let message: String?
+    let data: SellerLookupData?
+    
+    var exists: Bool { success == true && data?.sellerId != nil }
+    var sellerId: String? { data?.sellerId }
+    var shopName: String? { data?.shopName }
+    var email: String? { data?.emailHint }
 }
 
 struct VerifyPasswordRequest: Codable {
