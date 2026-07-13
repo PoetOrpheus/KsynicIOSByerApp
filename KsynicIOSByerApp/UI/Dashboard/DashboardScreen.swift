@@ -183,15 +183,3 @@ struct DashboardScreen: View {
     }
 }
 
-struct SmallButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.sellerCaption)
-            .fontWeight(.semibold)
-            .foregroundColor(.sellerInk)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 8)
-            .background(Color.sellerCloud)
-            .cornerRadius(8)
-    }
-}

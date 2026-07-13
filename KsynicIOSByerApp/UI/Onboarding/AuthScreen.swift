@@ -299,18 +299,6 @@ struct AuthScreen: View {
     }
 }
 
-struct PrimaryButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .fontWeight(.semibold)
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
-            .background(Color.sellerBlack)
-            .cornerRadius(26)
-            .opacity(configuration.isPressed ? 0.8 : 1)
-    }
-}
 
 struct RoundedCorner: Shape {
     var radius: CGFloat = .infinity

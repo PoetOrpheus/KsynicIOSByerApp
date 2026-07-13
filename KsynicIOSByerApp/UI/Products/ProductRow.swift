@@ -102,13 +102,3 @@ struct OutlineButtonStyle: ButtonStyle {
     }
 }
 
-struct IconButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .foregroundColor(.sellerMuted)
-            .padding(8)
-            .background(Color.sellerCloud)
-            .cornerRadius(8)
-            .opacity(configuration.isPressed ? 0.8 : 1)
-    }
-}
