@@ -51,6 +51,7 @@
 		E705A22AB04FCA315A908F1E /* ShipmentsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97FCE4B73C5C80F4FF3E2D5 /* ShipmentsScreen.swift */; };
 		F934DC570D52CC8293779705 /* String+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16EDE316D15EBAA2A13953B /* String+Formatting.swift */; };
 		3C18A855521B27A75ECCBF96 /* Double+Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DE33B6FFC737C28E8B8E00 /* Double+Money.swift */; };
+		FED70C2EFAA34382B62852AB /* KeyedDecodingContainer+Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFC3ADCEF84E2A8AFCFA6E /* KeyedDecodingContainer+Numeric.swift */; };
 		D4E539271C79220253B88C17 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641854D13E7A1372B75E0C42 /* ImageResizer.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		C97FCE4B73C5C80F4FF3E2D5 /* ShipmentsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentsScreen.swift; sourceTree = "<group>"; };
 		E16EDE316D15EBAA2A13953B /* String+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Formatting.swift"; sourceTree = "<group>"; };
 		71DE33B6FFC737C28E8B8E00 /* Double+Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Money.swift"; sourceTree = "<group>"; };
+		C9BFC3ADCEF84E2A8AFCFA6E /* KeyedDecodingContainer+Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyedDecodingContainer+Numeric.swift"; sourceTree = "<group>"; };
 		641854D13E7A1372B75E0C42 /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -397,6 +399,7 @@
 			children = (
 				E16EDE316D15EBAA2A13953B /* String+Formatting.swift */,
 				71DE33B6FFC737C28E8B8E00 /* Double+Money.swift */,
+				C9BFC3ADCEF84E2A8AFCFA6E /* KeyedDecodingContainer+Numeric.swift */,
 			);
 			path = "Extensions";
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				E705A22AB04FCA315A908F1E /* ShipmentsScreen.swift in Sources */,
 				F934DC570D52CC8293779705 /* String+Formatting.swift in Sources */,
 				3C18A855521B27A75ECCBF96 /* Double+Money.swift in Sources */,
+				FED70C2EFAA34382B62852AB /* KeyedDecodingContainer+Numeric.swift in Sources */,
 				D4E539271C79220253B88C17 /* ImageResizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

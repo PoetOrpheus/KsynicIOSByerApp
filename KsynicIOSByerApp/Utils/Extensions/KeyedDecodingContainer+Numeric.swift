@@ -1,7 +1,7 @@
 import Foundation
 
 extension KeyedDecodingContainer {
-    func decodeDoubleOrString(forKey key: KeyedDecodingContainer<K>.Key) -> Double? {
+    func decodeDoubleOrString(forKey key: Key) -> Double? {
         if let value = try? decode(Double.self, forKey: key) {
             return value
         }
@@ -11,7 +11,7 @@ extension KeyedDecodingContainer {
         return nil
     }
     
-    func decodeIntOrString(forKey key: KeyedDecodingContainer<K>.Key) -> Int? {
+    func decodeIntOrString(forKey key: Key) -> Int? {
         if let value = try? decode(Int.self, forKey: key) {
             return value
         }
