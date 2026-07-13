@@ -214,6 +214,12 @@ final class SellerViewModel: ObservableObject {
         lastVerificationCode = nil
     }
     
+    func resetRegistration() {
+        registrationStep = .form
+        pendingRegisterPayload = nil
+        lastVerificationCode = nil
+    }
+    
     // MARK: - Registration
     
     func register(request: SellerRegisterRequest) async {
