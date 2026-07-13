@@ -1,0 +1,6 @@
+# Xcode files must use LF line endings
+*.pbxproj text eol=lf
+*.xcworkspacedata text eol=lf
+*.plist text eol=lf
+*.xcscheme text eol=lf
+*.strings text eol=lf
