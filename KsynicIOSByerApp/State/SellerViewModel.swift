@@ -49,6 +49,12 @@ final class SellerViewModel: ObservableObject {
     @Published var pendingLoginShopName: String = ""
     @Published var lastVerificationCode: ContactVerificationDto?
     
+    private var pendingLoginSellerId: String = ""
+    private var pendingRegisterPayload: SellerAuthPayloadDto?
+    private var pendingRegisterSellerId: String {
+        pendingRegisterPayload?.seller?.userId ?? pendingRegisterPayload?.user?.id ?? ""
+    }
+    
     private let repository = SellerRepository.shared
     private let sessionStore = SellerSessionStore.shared
     private var pollingTask: Task<Void, Never>?
@@ -125,12 +131,11 @@ final class SellerViewModel: ObservableObject {
             pendingLoginPhone = phone
             pendingLoginEmail = response.email ?? ""
             pendingLoginShopName = response.shopName ?? ""
-            session.sellerId = sellerId
-            sessionStore.save(session)
+            pendingLoginSellerId = sellerId
             let details = try await repository.getSeller(sellerId: sellerId)
-            profile = details.data
             if let data = details.data {
-                updateSession(from: data)
+                pendingLoginEmail = data.email ?? ""
+                pendingLoginShopName = data.shopName ?? ""
             }
             phoneLoginStep = .choice
             setNotice("Кабинет продавца найден")
@@ -162,8 +167,13 @@ final class SellerViewModel: ObservableObject {
     
     func requestPhoneLoginCode() async {
         await runWithLoading {
+            let sellerId = pendingLoginSellerId.isEmpty ? session.sellerId : pendingLoginSellerId
+            guard !sellerId.isEmpty else {
+                setError("Не удалось определить продавца")
+                return
+            }
             let response = try await repository.requestContactVerification(
-                sellerId: session.sellerId,
+                sellerId: sellerId,
                 channel: "phone",
                 method: "sms"
             )
@@ -174,13 +184,22 @@ final class SellerViewModel: ObservableObject {
     
     func confirmPhoneLoginCode(code: String) async {
         await runWithLoading {
-            _ = try await repository.confirmContactVerification(sellerId: session.sellerId, channel: "phone", code: code)
-            let details = try await repository.getSeller(sellerId: session.sellerId)
+            guard code.count == 6 else {
+                setError("Введите 6-значный код")
+                return
+            }
+            let sellerId = pendingLoginSellerId.isEmpty ? session.sellerId : pendingLoginSellerId
+            guard !sellerId.isEmpty else {
+                setError("Не удалось определить продавца")
+                return
+            }
+            let result = try await repository.confirmContactVerification(sellerId: sellerId, channel: "phone", code: code)
+            let details = try await repository.getSeller(sellerId: sellerId)
             if let data = details.data {
                 updateSession(from: data)
             }
-            phoneLoginStep = .phone
-            setNotice("Вход выполнен")
+            resetPhoneLogin()
+            setNotice(result.message ?? "Вход выполнен")
             await refreshAll()
             startPolling()
         }
@@ -191,6 +210,8 @@ final class SellerViewModel: ObservableObject {
         pendingLoginPhone = ""
         pendingLoginEmail = ""
         pendingLoginShopName = ""
+        pendingLoginSellerId = ""
+        lastVerificationCode = nil
     }
     
     // MARK: - Registration
@@ -198,14 +219,12 @@ final class SellerViewModel: ObservableObject {
     func register(request: SellerRegisterRequest) async {
         await runWithLoading {
             let response = try await repository.register(request: request)
-            guard let payload = response.data, let seller = payload.seller else {
+            guard let payload = response.data, payload.seller != nil else {
                 setError("Данные регистрации утеряны")
                 return
             }
+            pendingRegisterPayload = payload
             pendingLoginPhone = request.phone
-            session.sellerId = seller.id ?? ""
-            session.email = request.email
-            session.phone = request.phone
             registrationStep = .code
             setNotice("Код отправлен")
         }
@@ -213,8 +232,13 @@ final class SellerViewModel: ObservableObject {
     
     func resendRegistrationCode() async {
         await runWithLoading {
+            let sellerId = pendingRegisterSellerId.isEmpty ? session.sellerId : pendingRegisterSellerId
+            guard !sellerId.isEmpty else {
+                setError("Не удалось определить продавца")
+                return
+            }
             let response = try await repository.requestContactVerification(
-                sellerId: session.sellerId,
+                sellerId: sellerId,
                 channel: "phone",
                 method: "sms"
             )
@@ -225,13 +249,24 @@ final class SellerViewModel: ObservableObject {
     
     func confirmRegistrationCode(code: String) async {
         await runWithLoading {
-            _ = try await repository.confirmContactVerification(sellerId: session.sellerId, channel: "phone", code: code)
-            let details = try await repository.getSeller(sellerId: session.sellerId)
-            if let profile = details.data {
-                updateSession(from: profile)
+            guard code.count == 6 else {
+                setError("Введите 6-значный код")
+                return
             }
+            guard let payload = pendingRegisterPayload else {
+                setError("Данные регистрации утеряны")
+                return
+            }
+            let sellerId = pendingRegisterSellerId.isEmpty ? session.sellerId : pendingRegisterSellerId
+            guard !sellerId.isEmpty else {
+                setError("Не удалось определить продавца")
+                return
+            }
+            let result = try await repository.confirmContactVerification(sellerId: sellerId, channel: "phone", code: code)
+            updateSession(from: payload)
+            pendingRegisterPayload = nil
             registrationStep = .form
-            setNotice("Телефон подтверждён")
+            setNotice(result.message ?? "Телефон подтверждён")
             await refreshAll()
             startPolling()
         }
@@ -240,16 +275,19 @@ final class SellerViewModel: ObservableObject {
     // MARK: - Logout
     
     func logout() {
-        session = SellerSession()
+        stopPolling()
         sessionStore.clear()
+        session = SellerSession()
         profile = nil
         documents = []
         dashboard = nil
         analytics = nil
         products = []
         sellerReviews = nil
-        stopPolling()
-        setNotice("Вы вышли из кабинета продавца")
+        productEditor = nil
+        resetPhoneLogin()
+        resetRegistration()
+        noticeMessage = "Вы вышли из кабинета продавца"
     }
     
     // MARK: - Refresh
@@ -486,7 +524,8 @@ final class SellerViewModel: ObservableObject {
     
     private func updateSession(from seller: SellerAccountDto, user: SellerUserDto) {
         session.isLoggedIn = true
-        session.sellerId = seller.id ?? session.sellerId
+        // Matches Android: payload session uses seller.user_id, falling back to user.id.
+        session.sellerId = seller.userId ?? seller.id ?? user.id ?? session.sellerId
         session.shopName = seller.shopName ?? session.shopName
         session.sellerStatus = seller.status ?? session.sellerStatus
         session.isActive = seller.isActive ?? session.isActive
@@ -500,6 +539,11 @@ final class SellerViewModel: ObservableObject {
         session.isPhoneVerified = user.isPhoneVerified ?? session.isPhoneVerified
         session.isEmailVerified = user.isEmailVerified ?? session.isEmailVerified
         sessionStore.save(session)
+    }
+    
+    private func updateSession(from payload: SellerAuthPayloadDto) {
+        guard let seller = payload.seller, let user = payload.user else { return }
+        updateSession(from: seller, user: user)
     }
     
     private func updateSession(from profile: SellerProfileDto) {

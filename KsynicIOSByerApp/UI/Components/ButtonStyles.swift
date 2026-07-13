@@ -55,6 +55,21 @@ struct SmallButtonStyle: ButtonStyle {
     }
 }
 
+// Matches Android Material3 default filled button used for product status toggle.
+struct StatusButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.sellerLabel)
+            .fontWeight(.medium)
+            .foregroundColor(.white)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            .background(Color.sellerBlack)
+            .cornerRadius(20)
+            .opacity(configuration.isPressed ? 0.8 : 1)
+    }
+}
+
 struct FilterChip: View {
     let title: String
     let isSelected: Bool

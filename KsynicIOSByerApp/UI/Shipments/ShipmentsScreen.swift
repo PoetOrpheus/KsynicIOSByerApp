@@ -28,6 +28,7 @@ struct ShipmentsScreen: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Назад") { onClose() }
+                        .foregroundColor(.sellerInk)
                 }
             }
         }
@@ -85,20 +86,34 @@ struct ShipmentCard: View {
     }
     
     private func deadline(for order: SellerOrderDto) -> String {
-        let dateString = order.expectedDate ?? order.createdAt ?? ISO8601DateFormatter().string(from: Date())
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        var date = formatter.date(from: dateString)
-        if date == nil {
-            let fallback = DateFormatter()
-            fallback.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-            date = fallback.date(from: dateString)
-        }
-        guard let baseDate = date else { return "—" }
+        // Android logic: expected_date ?? created_at ?? current time, then +72 hours.
+        let baseDate = parseDeadlineDate(order.expectedDate)
+            ?? parseDeadlineDate(order.createdAt)
+            ?? Date()
         let deadlineDate = baseDate.addingTimeInterval(72 * 3600)
         let out = DateFormatter()
         out.dateFormat = "d MMMM, HH:mm"
         out.locale = Locale(identifier: "ru_RU")
         return out.string(from: deadlineDate)
+    }
+
+    private func parseDeadlineDate(_ string: String?) -> Date? {
+        guard let string = string, !string.isEmpty else { return nil }
+        let formats = [
+            "yyyy-MM-dd'T'HH:mm:ss.SSSZ",
+            "yyyy-MM-dd'T'HH:mm:ss.SSS",
+            "yyyy-MM-dd'T'HH:mm:ssZ",
+            "yyyy-MM-dd'T'HH:mm:ss"
+        ]
+        for format in formats {
+            let formatter = DateFormatter()
+            formatter.dateFormat = format
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.timeZone = TimeZone(identifier: "UTC")
+            if let date = formatter.date(from: string) {
+                return date
+            }
+        }
+        return nil
     }
 }

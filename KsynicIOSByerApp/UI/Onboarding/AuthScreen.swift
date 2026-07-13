@@ -44,6 +44,7 @@ struct AuthScreen: View {
                 }
         }
         .navigationBarHidden(true)
+        .accentColor(.sellerInkDark)
     }
     .preferredColorScheme(.light)
     }
@@ -167,11 +168,13 @@ struct AuthScreen: View {
                     viewModel.goToPhoneLoginCode()
                 }
                 .buttonStyle(PrimaryButtonStyle())
+                .disabled(viewModel.isBusy)
                 
                 Button("Войти по паролю") {
                     viewModel.goToPhoneLoginPassword()
                 }
                 .buttonStyle(PrimaryButtonStyle())
+                .disabled(viewModel.isBusy)
                 
                 Button("Войти по другому номеру телефона") {
                     viewModel.resetPhoneLogin()
@@ -198,6 +201,7 @@ struct AuthScreen: View {
                     Task { await viewModel.requestPhoneLoginCode() }
                 }
                 .foregroundColor(.sellerMutedDark)
+                .disabled(viewModel.isBusy)
                 Button("Войти по другому номеру телефона") {
                     viewModel.resetPhoneLogin()
                     phone = "+7"
@@ -226,6 +230,7 @@ struct AuthScreen: View {
                     Task { await viewModel.resendRegistrationCode() }
                 }
                 .foregroundColor(.sellerMutedDark)
+                .disabled(viewModel.isBusy)
                 Button("Изменить телефон") {
                     viewModel.registrationStep = .form
                     registrationCode = ""
@@ -242,13 +247,22 @@ struct AuthScreen: View {
                 Button(action: {
                     Task { await primaryAction() }
                 }) {
-                    Text(title)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                        .background(Color.sellerBlack)
-                        .cornerRadius(26)
+                    if viewModel.isBusy {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(Color.sellerBlack)
+                            .cornerRadius(26)
+                    } else {
+                        Text(title)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(Color.sellerBlack)
+                            .cornerRadius(26)
+                    }
                 }
                 .disabled(viewModel.isBusy)
             }

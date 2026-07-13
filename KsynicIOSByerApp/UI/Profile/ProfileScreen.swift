@@ -237,6 +237,7 @@ struct EditProfileDialog: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Отмена") { dismiss() }
+                        .foregroundColor(.sellerInk)
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Сохранить") {
@@ -313,6 +314,7 @@ struct EditPickupPointDialog: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Отмена") { dismiss() }
+                        .foregroundColor(.sellerInk)
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Сохранить") {
@@ -323,6 +325,7 @@ struct EditPickupPointDialog: View {
                             dismiss()
                         }
                     }
+                    .foregroundColor(.sellerInk)
                 }
             }
             .onAppear {
@@ -403,6 +406,7 @@ struct ChangePhoneDialog: View {
                 if step != .done {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Отмена") { dismiss() }
+                            .foregroundColor(.sellerInk)
                     }
                 }
             }

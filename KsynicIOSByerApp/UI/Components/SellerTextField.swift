@@ -77,3 +77,22 @@ struct SellerTextField: View {
         }
     }
 }
+
+extension View {
+    /// Adds a "Готово" / Done button above the software keyboard to dismiss it.
+    /// Use on screens that contain numeric/phone-pad fields but no per-field submit action.
+    func keyboardDoneButton(color: Color = .sellerBlue) -> some View {
+        self.toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Готово") {
+                    UIApplication.shared.sendAction(
+                        #selector(UIResponder.resignFirstResponder),
+                        to: nil, from: nil, for: nil
+                    )
+                }
+                .foregroundColor(color)
+            }
+        }
+    }
+}

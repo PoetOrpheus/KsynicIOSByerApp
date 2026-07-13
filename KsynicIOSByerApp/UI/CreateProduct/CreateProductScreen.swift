@@ -51,6 +51,7 @@ struct CreateProductScreen: View {
             ImagePicker(selectedImages: $selectedImages, maxSelection: maxPhotos - selectedImages.count)
         }
         .background(Color.sellerBackground)
+        .keyboardDoneButton()
     }
     
     private var basicCard: some View {

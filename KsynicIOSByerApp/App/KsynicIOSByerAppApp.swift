@@ -8,6 +8,7 @@ struct KsynicIOSByerAppApp: App {
     var body: some Scene {
         WindowGroup {
             SellerApp()
+                .accentColor(.sellerInk)
         }
     }
 }

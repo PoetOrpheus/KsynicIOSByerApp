@@ -58,7 +58,7 @@ struct ProductRow: View {
                 Button(product.status == "published" ? "Снять с публикации" : "Опубликовать") {
                     onTogglePublish()
                 }
-                .buttonStyle(PrimaryButtonStyle())
+                .buttonStyle(StatusButtonStyle())
                 .disabled(isPending)
                 
                 Button(action: onArchive) {
