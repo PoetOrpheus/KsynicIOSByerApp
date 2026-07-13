@@ -3,6 +3,7 @@ import SwiftUI
 struct DashboardScreen: View {
     @ObservedObject var viewModel: SellerViewModel
     let onOpenShipments: () -> Void
+    let onOpenReviews: (() -> Void)?
     
     var body: some View {
         ScrollView {
@@ -22,8 +23,10 @@ struct DashboardScreen: View {
             Task {
                 await viewModel.refreshDashboard()
                 await viewModel.loadSellerReviews()
+                await viewModel.loadProducts()
             }
         }
+        .background(Color.sellerBackground)
     }
     
     private var statusPanel: some View {
@@ -37,7 +40,7 @@ struct DashboardScreen: View {
         }
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.sellerBlack)
+        .background(Color.sellerSurface)
         .cornerRadius(28)
     }
     
@@ -101,6 +104,10 @@ struct DashboardScreen: View {
                 Image(systemName: "chevron.right")
                     .foregroundColor(.sellerMuted)
             }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            onOpenReviews?()
         }
     }
     

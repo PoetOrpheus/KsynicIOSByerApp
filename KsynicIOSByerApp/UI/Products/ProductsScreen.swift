@@ -30,8 +30,13 @@ struct ProductsScreen: View {
                 }
                 
                 if viewModel.products.isEmpty {
-                    EmptyPanel(text: "Товары не найдены", systemImage: "info.circle")
-                        .padding(.horizontal, 16)
+                    if let error = viewModel.errorMessage {
+                        EmptyPanel(text: error, systemImage: "exclamationmark.triangle")
+                            .padding(.horizontal, 16)
+                    } else {
+                        EmptyPanel(text: "Товары не найдены", systemImage: "info.circle")
+                            .padding(.horizontal, 16)
+                    }
                 } else {
                     LazyVStack(spacing: 12) {
                         ForEach(viewModel.products) { product in
@@ -71,6 +76,7 @@ struct ProductsScreen: View {
         .onAppear {
             Task { await viewModel.loadProducts(status: viewModel.productsStatusFilter) }
         }
+        .background(Color.sellerBackground)
         .alert(item: $showDeleteConfirmation) { product in
             Alert(
                 title: Text("Удалить товар?"),

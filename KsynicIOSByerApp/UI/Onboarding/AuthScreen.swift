@@ -31,7 +31,7 @@ struct AuthScreen: View {
                             if let debugCode = viewModel.lastVerificationCode?.debugCode {
                                 Text("Тестовый код: \(debugCode)")
                                     .font(.sellerCaption)
-                                    .foregroundColor(.sellerMuted)
+                                    .foregroundColor(.sellerMutedDark)
                             }
                         }
                         .padding(24)
@@ -45,6 +45,7 @@ struct AuthScreen: View {
         }
         .navigationBarHidden(true)
     }
+    .preferredColorScheme(.light)
     }
     
     private var header: some View {
@@ -72,7 +73,7 @@ struct AuthScreen: View {
             modeButton(title: "Регистрация", index: 1)
         }
         .padding(4)
-        .background(Color.sellerCloud)
+        .background(Color.sellerCloudLight)
         .cornerRadius(8)
     }
     
@@ -87,7 +88,7 @@ struct AuthScreen: View {
             Text(title)
                 .font(.sellerBody)
                 .fontWeight(selectedTab == index ? .semibold : .regular)
-                .foregroundColor(selectedTab == index ? .sellerInk : .sellerMuted)
+                .foregroundColor(selectedTab == index ? .sellerInkDark : .sellerMutedDark)
                 .padding(.vertical, 10)
                 .frame(maxWidth: .infinity)
                 .background(selectedTab == index ? Color.white : Color.clear)
@@ -99,7 +100,7 @@ struct AuthScreen: View {
         VStack(spacing: 6) {
             Text(titleText)
                 .font(.sellerTitle)
-                .foregroundColor(.sellerInk)
+                .foregroundColor(.sellerInkDark)
             Text(subtitleText)
                 .font(.sellerBody)
                 .foregroundColor(.authSecondary)
@@ -158,7 +159,7 @@ struct AuthScreen: View {
     private var loginForm: some View {
         switch viewModel.phoneLoginStep {
         case .phone:
-            SellerTextField(title: "Телефон", text: $phone, keyboardType: .phonePad)
+            SellerTextField(title: "Телефон", text: $phone, keyboardType: .phonePad, textColor: .sellerInkDark, surfaceColor: .white)
         case .choice:
             VStack(spacing: 12) {
                 Button("Войти по SMS-коду") {
@@ -176,33 +177,33 @@ struct AuthScreen: View {
                     viewModel.resetPhoneLogin()
                     phone = "+7"
                 }
-                .foregroundColor(.sellerMuted)
+                .foregroundColor(.sellerMutedDark)
             }
         case .password:
             VStack(spacing: 12) {
-                SellerTextField(title: "Email", text: $email, keyboardType: .emailAddress)
-                SellerTextField(title: "Пароль", text: $loginPassword, isSecure: true)
+                SellerTextField(title: "Email", text: $email, keyboardType: .emailAddress, textColor: .sellerInkDark, surfaceColor: .white)
+                SellerTextField(title: "Пароль", text: $loginPassword, isSecure: true, textColor: .sellerInkDark, surfaceColor: .white)
                 Button("Войти по другому номеру телефона") {
                     viewModel.resetPhoneLogin()
                     phone = "+7"
                     email = ""
                     loginPassword = ""
                 }
-                .foregroundColor(.sellerMuted)
+                .foregroundColor(.sellerMutedDark)
             }
         case .code:
             VStack(spacing: 12) {
-                SellerTextField(title: "Код из SMS", text: $loginCode, keyboardType: .numberPad)
+                SellerTextField(title: "Код из SMS", text: $loginCode, keyboardType: .numberPad, textColor: .sellerInkDark, surfaceColor: .white)
                 Button("Отправить код повторно") {
                     Task { await viewModel.requestPhoneLoginCode() }
                 }
-                .foregroundColor(.sellerMuted)
+                .foregroundColor(.sellerMutedDark)
                 Button("Войти по другому номеру телефона") {
                     viewModel.resetPhoneLogin()
                     phone = "+7"
                     loginCode = ""
                 }
-                .foregroundColor(.sellerMuted)
+                .foregroundColor(.sellerMutedDark)
             }
         }
     }
@@ -212,24 +213,24 @@ struct AuthScreen: View {
         switch viewModel.registrationStep {
         case .form:
             VStack(spacing: 12) {
-                SellerTextField(title: "Телефон", text: $phone, keyboardType: .phonePad)
-                SellerTextField(title: "Email", text: $email, keyboardType: .emailAddress)
-                SellerTextField(title: "Пароль", text: $password, isSecure: true)
-                SellerTextField(title: "Имя", text: $firstName)
-                SellerTextField(title: "Фамилия", text: $lastName)
+                SellerTextField(title: "Телефон", text: $phone, keyboardType: .phonePad, textColor: .sellerInkDark, surfaceColor: .white)
+                SellerTextField(title: "Email", text: $email, keyboardType: .emailAddress, textColor: .sellerInkDark, surfaceColor: .white)
+                SellerTextField(title: "Пароль", text: $password, isSecure: true, textColor: .sellerInkDark, surfaceColor: .white)
+                SellerTextField(title: "Имя", text: $firstName, textColor: .sellerInkDark, surfaceColor: .white)
+                SellerTextField(title: "Фамилия", text: $lastName, textColor: .sellerInkDark, surfaceColor: .white)
             }
         case .code:
             VStack(spacing: 12) {
-                SellerTextField(title: "Код из SMS", text: $registrationCode, keyboardType: .numberPad)
+                SellerTextField(title: "Код из SMS", text: $registrationCode, keyboardType: .numberPad, textColor: .sellerInkDark, surfaceColor: .white)
                 Button("Отправить код повторно") {
                     Task { await viewModel.resendRegistrationCode() }
                 }
-                .foregroundColor(.sellerMuted)
+                .foregroundColor(.sellerMutedDark)
                 Button("Изменить телефон") {
                     viewModel.registrationStep = .form
                     registrationCode = ""
                 }
-                .foregroundColor(.sellerMuted)
+                .foregroundColor(.sellerMutedDark)
             }
         }
     }

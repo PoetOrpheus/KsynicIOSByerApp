@@ -7,7 +7,7 @@ struct PrimaryButtonStyle: ButtonStyle {
             .foregroundColor(.white)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)
-            .background(Color.sellerBlack)
+            .background(Color.sellerBlue)
             .cornerRadius(26)
             .opacity(configuration.isPressed ? 0.8 : 1)
     }
@@ -21,7 +21,7 @@ struct OutlineButtonStyle: ButtonStyle {
             .foregroundColor(.sellerInk)
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
-            .background(Color.white)
+            .background(Color.clear)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.sellerLine, lineWidth: 1)
@@ -68,7 +68,7 @@ struct FilterChip: View {
                 .foregroundColor(isSelected ? .white : .sellerInk)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
-                .background(isSelected ? Color.sellerBlack : Color.sellerCloud)
+                .background(isSelected ? Color.sellerBlue : Color.sellerCloud)
                 .cornerRadius(16)
         }
     }

@@ -62,6 +62,7 @@ struct ReviewsScreen: View {
                 selectedProductId = filter
             }
         }
+        .background(Color.sellerBackground)
     }
     
     private var statsBlock: some View {
@@ -180,7 +181,7 @@ struct ReviewCard: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
                         ForEach(Array(images.enumerated()), id: \.offset) { _, image in
-                            ProductImage(path: image, size: 80)
+                            ProductImage(path: image.imageUrl, size: 80)
                         }
                     }
                 }

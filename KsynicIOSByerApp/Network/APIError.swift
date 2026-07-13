@@ -3,7 +3,7 @@ import Foundation
 enum APIError: Error, LocalizedError {
     case invalidURL
     case invalidResponse
-    case serverUnavailable
+    case serverUnavailable(String)
     case httpStatus(Int, String?)
     case decodingError(Error)
     case encodingError(Error)
@@ -15,8 +15,8 @@ enum APIError: Error, LocalizedError {
             return "Неверный URL"
         case .invalidResponse:
             return "Некорректный ответ сервера"
-        case .serverUnavailable:
-            return "Сервер временно не работает. Попробуйте позже"
+        case .serverUnavailable(let reason):
+            return "Не удалось подключиться к серверу: \(reason)"
         case .httpStatus(let code, let message):
             if let message = message, !message.isEmpty {
                 return message

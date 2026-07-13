@@ -47,6 +47,7 @@ struct DocumentsScreen: View {
             await viewModel.refreshDocuments()
             await viewModel.refreshProfile()
         }
+        .background(Color.sellerBackground)
         .onAppear {
             Task {
                 await viewModel.refreshDocuments()
@@ -219,7 +220,7 @@ struct DocumentsScreen: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
-                .background(Color.sellerBlack)
+                .background(Color.sellerBlue)
                 .cornerRadius(26)
         }
     }

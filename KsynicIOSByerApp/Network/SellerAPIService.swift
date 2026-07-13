@@ -205,7 +205,8 @@ actor SellerAPIService {
         do {
             (data, response) = try await session.data(for: request)
         } catch {
-            throw APIError.serverUnavailable
+            logError(error)
+            throw APIError.serverUnavailable(error.localizedDescription)
         }
         
         logResponse(data: data, response: response)

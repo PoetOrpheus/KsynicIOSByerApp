@@ -24,6 +24,7 @@ struct ShipmentsScreen: View {
             }
             .navigationTitle("Ближайшие к отправке")
             .navigationBarTitleDisplayMode(.inline)
+            .background(Color.sellerBackground)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Назад") { onClose() }

@@ -34,6 +34,7 @@ struct ProfileScreen: View {
         .sheet(isPresented: $showChangePhone) {
             ChangePhoneDialog(viewModel: viewModel)
         }
+        .background(Color.sellerBackground)
     }
     
     private var header: some View {

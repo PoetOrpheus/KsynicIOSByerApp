@@ -13,7 +13,7 @@ struct SellerShell: View {
                 ZStack {
                     switch selectedTab {
                     case .dashboard:
-                        DashboardScreen(viewModel: viewModel, onOpenShipments: { showShipments = true })
+                        DashboardScreen(viewModel: viewModel, onOpenShipments: { showShipments = true }, onOpenReviews: { selectedTab = .reviews })
                     case .products:
                         ProductsScreen(viewModel: viewModel)
                     case .create:
@@ -66,6 +66,7 @@ struct SellerShell: View {
                 .padding(.top, 8),
             alignment: .top
         )
+        .preferredColorScheme(.dark)
     }
     
     private var topBar: some View {

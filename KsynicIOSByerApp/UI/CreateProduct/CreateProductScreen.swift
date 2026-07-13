@@ -5,6 +5,8 @@ struct CreateProductScreen: View {
     @ObservedObject var viewModel: SellerViewModel
     let onCreated: () -> Void
     
+    @FocusState private var focusedField: Field?
+    
     @State private var name: String = ""
     @State private var price: String = ""
     @State private var oldPrice: String = ""
@@ -21,6 +23,10 @@ struct CreateProductScreen: View {
     @State private var showImagePicker: Bool = false
     
     private let maxPhotos = 8
+    
+    private enum Field: Hashable {
+        case name, price, oldPrice, stock, shortDescription, description
+    }
     
     private var isEditing: Bool { viewModel.productEditor != nil }
     
@@ -44,21 +50,28 @@ struct CreateProductScreen: View {
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(selectedImages: $selectedImages, maxSelection: maxPhotos - selectedImages.count)
         }
+        .background(Color.sellerBackground)
     }
     
     private var basicCard: some View {
         FormCard(title: "Основное") {
             VStack(spacing: 12) {
-                SellerTextField(title: "Название товара", text: $name)
-                SellerTextField(title: "Цена", text: $price, keyboardType: .decimalPad)
-                SellerTextField(title: "Старая цена", text: $oldPrice, keyboardType: .decimalPad)
+                SellerTextField(title: "Название товара", text: $name, onSubmit: { focusedField = .price })
+                    .focused($focusedField, equals: .name)
+                SellerTextField(title: "Цена", text: $price, keyboardType: .decimalPad, onSubmit: { focusedField = .oldPrice })
+                    .focused($focusedField, equals: .price)
+                SellerTextField(title: "Старая цена", text: $oldPrice, keyboardType: .decimalPad, onSubmit: { focusedField = .stock })
+                    .focused($focusedField, equals: .oldPrice)
                 HStack {
-                    SellerTextField(title: "Остаток", text: $stock, keyboardType: .numberPad)
+                    SellerTextField(title: "Остаток", text: $stock, keyboardType: .numberPad, onSubmit: { focusedField = .shortDescription })
+                        .focused($focusedField, equals: .stock)
                     Toggle("Без лимита", isOn: $unlimitedStock)
                         .toggleStyle(.switch)
                 }
-                SellerTextField(title: "Краткое описание", text: $shortDescription)
-                SellerTextField(title: "Описание", text: $description, minLines: 4)
+                SellerTextField(title: "Краткое описание", text: $shortDescription, onSubmit: { focusedField = .description })
+                    .focused($focusedField, equals: .shortDescription)
+                SellerTextField(title: "Описание", text: $description, minLines: 4, onSubmit: { focusedField = nil })
+                    .focused($focusedField, equals: .description)
             }
         }
     }
@@ -166,6 +179,7 @@ struct CreateProductScreen: View {
                     get: { specValues[item.specKey ?? ""] ?? "" },
                     set: { specValues[item.specKey ?? ""] = $0 }
                 ))
+                .foregroundColor(.sellerInk)
                 .padding(12)
                 .background(Color.sellerSurface)
                 .overlay(
@@ -209,7 +223,7 @@ struct CreateProductScreen: View {
                                             .font(.system(size: 10, weight: .bold))
                                             .padding(.horizontal, 6)
                                             .padding(.vertical, 2)
-                                            .background(Color.sellerBlack)
+                                            .background(Color.sellerBlue)
                                             .foregroundColor(.white)
                                             .cornerRadius(4)
                                             .padding(4)
@@ -245,7 +259,7 @@ struct CreateProductScreen: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
-                .background(Color.sellerBlack)
+                .background(Color.sellerBlue)
                 .cornerRadius(26)
         }
     }

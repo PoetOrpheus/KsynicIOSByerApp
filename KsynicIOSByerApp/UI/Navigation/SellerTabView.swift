@@ -46,12 +46,12 @@ struct SellerTabView: View {
                     .font(.sellerCaption)
                     .fontWeight(isSelected ? .semibold : .regular)
             }
-            .foregroundColor(isSelected ? .white : (disabled ? .gray : Color(white: 0.33)))
+            .foregroundColor(isSelected ? .white : (disabled ? .gray : .sellerMuted))
             .padding(.horizontal, 14)
             .padding(.vertical, 10)
             .background(
                 RoundedRectangle(cornerRadius: 28)
-                    .fill(isSelected ? Color.sellerBlack : Color.clear)
+                    .fill(isSelected ? Color.sellerBlue : Color.clear)
             )
         }
         .disabled(disabled)
