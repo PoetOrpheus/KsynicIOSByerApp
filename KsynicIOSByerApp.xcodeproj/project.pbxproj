@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -463,24 +463,25 @@
 		8F68381430042F4100757363 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					8F68381B30042F4200757363 = {
-						CreatedOnToolsVersion = 12.4;
+						CreatedOnToolsVersion = 14.2;
 					};
 					8F68382B30042F4900757363 = {
-						CreatedOnToolsVersion = 12.4;
+						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 8F68381B30042F4200757363;
 					};
 					8F68383530042F4900757363 = {
-						CreatedOnToolsVersion = 12.4;
+						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 8F68381B30042F4200757363;
 					};
 				};
 			};
 			buildConfigurationList = 8F68381730042F4100757363 /* Build configuration list for PBXProject "KsynicIOSByerApp" */;
-			compatibilityVersion = "Xcode 12.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
