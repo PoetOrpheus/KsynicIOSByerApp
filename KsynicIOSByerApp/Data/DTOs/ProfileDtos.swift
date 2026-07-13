@@ -75,20 +75,52 @@ struct SellerProfileDto: Codable {
 }
 
 struct UpdateSellerRequest: Codable {
-    let shopName: String? = nil
-    let description: String? = nil
-    let firstName: String? = nil
-    let lastName: String? = nil
-    let phone: String? = nil
-    let email: String? = nil
-    let avatarUrl: String? = nil
-    let businessType: String? = nil
-    let legalName: String? = nil
-    let taxId: String? = nil
-    let registrationNumber: String? = nil
-    let pickupPointId: String? = nil
-    let pickupPoint: String? = nil
-    let notificationsEnabled: Bool? = nil
+    let shopName: String?
+    let description: String?
+    let firstName: String?
+    let lastName: String?
+    let phone: String?
+    let email: String?
+    let avatarUrl: String?
+    let businessType: String?
+    let legalName: String?
+    let taxId: String?
+    let registrationNumber: String?
+    let pickupPointId: String?
+    let pickupPoint: String?
+    let notificationsEnabled: Bool?
+    
+    init(
+        shopName: String? = nil,
+        description: String? = nil,
+        firstName: String? = nil,
+        lastName: String? = nil,
+        phone: String? = nil,
+        email: String? = nil,
+        avatarUrl: String? = nil,
+        businessType: String? = nil,
+        legalName: String? = nil,
+        taxId: String? = nil,
+        registrationNumber: String? = nil,
+        pickupPointId: String? = nil,
+        pickupPoint: String? = nil,
+        notificationsEnabled: Bool? = nil
+    ) {
+        self.shopName = shopName
+        self.description = description
+        self.firstName = firstName
+        self.lastName = lastName
+        self.phone = phone
+        self.email = email
+        self.avatarUrl = avatarUrl
+        self.businessType = businessType
+        self.legalName = legalName
+        self.taxId = taxId
+        self.registrationNumber = registrationNumber
+        self.pickupPointId = pickupPointId
+        self.pickupPoint = pickupPoint
+        self.notificationsEnabled = notificationsEnabled
+    }
     
     enum CodingKeys: String, CodingKey {
         case shopName = "shop_name"
