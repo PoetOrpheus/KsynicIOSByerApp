@@ -133,17 +133,31 @@ struct VerifyPasswordRequest: Codable {
 }
 
 struct PhoneChangeRequest: Codable {
-    let phone: String
+    let newPhone: String
+    
+    enum CodingKeys: String, CodingKey {
+        case newPhone = "new_phone"
+    }
 }
 
 struct PhoneChangeConfirmRequest: Codable {
-    let phone: String
+    let newPhone: String
     let code: String
+    
+    enum CodingKeys: String, CodingKey {
+        case newPhone = "new_phone"
+        case code
+    }
 }
 
 struct ContactVerificationRequest: Codable {
     let channel: String // phone | email
-    let method: String? // sms | call
+    let deliveryMethod: String? // sms | call
+    
+    enum CodingKeys: String, CodingKey {
+        case channel
+        case deliveryMethod = "delivery_method"
+    }
 }
 
 struct ContactVerificationConfirmRequest: Codable {
@@ -159,14 +173,21 @@ struct ContactVerificationResponse: Codable {
 
 struct ContactVerificationDto: Codable {
     let channel: String?
-    let target: String?
-    let expiresAt: String?
+    let deliveryMethod: String?
+    let maskedTarget: String?
+    let expiresInSeconds: Int?
     let debugCode: String?
+    let isEmailVerified: Bool?
+    let isPhoneVerified: Bool?
     
     enum CodingKeys: String, CodingKey {
-        case channel, target
-        case expiresAt = "expires_at"
+        case channel
+        case deliveryMethod = "delivery_method"
+        case maskedTarget = "masked_target"
+        case expiresInSeconds = "expires_in_seconds"
         case debugCode = "debug_code"
+        case isEmailVerified = "is_email_verified"
+        case isPhoneVerified = "is_phone_verified"
     }
 }
 

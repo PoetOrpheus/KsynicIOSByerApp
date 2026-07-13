@@ -40,11 +40,11 @@ actor SellerRepository {
     }
     
     func requestPhoneChange(sellerId: String, phone: String) async throws -> ContactVerificationResponse {
-        try await api.requestPhoneChange(sellerId: sellerId, body: PhoneChangeRequest(phone: phone))
+        try await api.requestPhoneChange(sellerId: sellerId, body: PhoneChangeRequest(newPhone: phone))
     }
     
     func confirmPhoneChange(sellerId: String, phone: String, code: String) async throws -> SellerDetailsResponse {
-        try await api.confirmPhoneChange(sellerId: sellerId, body: PhoneChangeConfirmRequest(phone: phone, code: code))
+        try await api.confirmPhoneChange(sellerId: sellerId, body: PhoneChangeConfirmRequest(newPhone: phone, code: code))
     }
     
     func getDocuments(sellerId: String) async throws -> SellerDocumentsResponse {
@@ -60,7 +60,7 @@ actor SellerRepository {
     }
     
     func requestContactVerification(sellerId: String, channel: String, method: String? = nil) async throws -> ContactVerificationResponse {
-        try await api.requestContactVerification(sellerId: sellerId, body: ContactVerificationRequest(channel: channel, method: method))
+        try await api.requestContactVerification(sellerId: sellerId, body: ContactVerificationRequest(channel: channel, deliveryMethod: method))
     }
     
     func confirmContactVerification(sellerId: String, channel: String, code: String) async throws -> ContactVerificationResponse {

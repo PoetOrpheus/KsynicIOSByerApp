@@ -135,14 +135,14 @@ struct AuthScreen: View {
             case .password:
                 return "Кабинет \(viewModel.pendingLoginShopName.ifEmpty("продавца"))\nВведите пароль от аккаунта."
             case .code:
-                return "Введите 6-значный код из SMS, отправленного на \(phone.maskedPhone())."
+                return "Введите 6-значный код из SMS, отправленного на \(viewModel.lastVerificationCode?.maskedTarget ?? phone.maskedPhone())."
             }
         } else {
             switch viewModel.registrationStep {
             case .form:
                 return "Заполните основные данные. Название магазина добавим позже в профиле."
             case .code:
-                return "Введите 6-значный код из SMS, отправленного на \(phone)."
+                return "Введите 6-значный код из SMS, отправленного на \(viewModel.lastVerificationCode?.maskedTarget ?? phone)."
             }
         }
     }
